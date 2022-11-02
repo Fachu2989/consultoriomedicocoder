@@ -6,7 +6,7 @@ from .models import Medico, Enfermero, Paciente, Administrativo
 #def de modelos
 def medico(request, nombre, apellido, especialidad, matricula):
     medico = Medico(nombre=nombre, apellido=apellido, especialidad=especialidad, matricula=matricula)
-    medicos.save()
+    medico.save()
 
 def administrativo(request, nombre, apellido, legajo):
     administrativo = Administrativo(nombre=nombre, apellido=apellido, legajo=legajo)
