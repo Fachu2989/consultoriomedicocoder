@@ -1,0 +1,18 @@
+{% extends 'template.html' %}
+{% block contenidoaheredar %}
+
+    <h1>Pacientes</h1>
+
+    <p>Este es un listado actual de nuestros pacientes</p>
+    
+    <ul> 
+    {%for paciente in pacientes %}
+    <li>    {{paciente.nombre}}
+            {{paciente.apellido}}
+            {{paciente.expediente}}
+            {{paciente.fecha_nacimiento}}
+            {{paciente.tratamiento}}
+    </li>
+    {%endfor%}
+    </ul>
+{%endblock%}

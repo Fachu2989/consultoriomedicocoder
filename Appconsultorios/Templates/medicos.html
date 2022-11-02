@@ -1,0 +1,16 @@
+{% extends 'template.html' %}
+{% block contenidoaheredar %}
+
+    <h1>Medicos</h1>
+
+    <p>Este es el staff médico de nuestros consultorios</p>
+    
+    <ul> 
+    {%for medico in medicos %}
+    <li>    {{medico.nombre}}
+            {{medico.apellido}}
+            {{medico.especialidad}}        
+    </li>
+    {%endfor%}
+    </ul>
+{%endblock%}
