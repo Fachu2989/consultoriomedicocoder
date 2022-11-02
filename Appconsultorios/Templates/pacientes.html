@@ -1,18 +1,16 @@
-{% extends 'template.html' %}
-{% block contenidoaheredar %}
+{% extends 'padre.html' %}
 
-    <h1>Pacientes</h1>
+{% load static %}
 
-    <p>Este es un listado actual de nuestros pacientes</p>
+{% block contenidoQueCambia %}
+
+    <h1>Vista de Pacientes </h1>    
+    <h4>Estos son los pacientes que tenemos registrados en nuestra base de datos</h4>
+    <ul>
     
-    <ul> 
-    {%for paciente in pacientes %}
-    <li>    {{paciente.nombre}}
-            {{paciente.apellido}}
-            {{paciente.expediente}}
-            {{paciente.fecha_nacimiento}}
-            {{paciente.tratamiento}}
-    </li>
-    {%endfor%}
+        {% for paciente in lista_pacientes %}
+            <li>{{paciente.nombre}} - {{paciente.apellido}} - {{paciente.fecha_nacimiento}} - {{paciente.tratamiento}} - {{paciente.expediente}}</li>
+        {% endfor %}
+    
     </ul>
-{%endblock%}
+{% endblock contenidoQueCambia %} 

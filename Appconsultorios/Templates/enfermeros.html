@@ -5,11 +5,11 @@
 {% block contenidoQueCambia %}
 
     <h1>Vista de Enfermeros </h1>    
-    <h4>Estos son Nuestros enfermeros que tenemos trabajando en este momento</h4>
+    <h4>Estos son los enfermeros que tenemos trabajando en este momento</h4>
     <ul>
     
         {% for enfermero in lista_enfermeros %}
-            <li>{{administrativo.nombre}} - {{administrativo.apellido}} - {{administrativo.legajo}}</li>
+            <li>{{enfermero.nombre}} - {{enfermero.apellido}} - {{enfermero.matricula}}</li>
         {% endfor %}
     
     </ul>

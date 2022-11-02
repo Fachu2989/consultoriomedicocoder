@@ -1,16 +1,16 @@
-{% extends 'template.html' %}
-{% block contenidoaheredar %}
+{% extends 'padre.html' %}
 
-    <h1>Medicos</h1>
+{% load static %}
 
-    <p>Este es el staff médico de nuestros consultorios</p>
+{% block contenidoQueCambia %}
+
+    <h1>Vista de Medicos </h1>    
+    <h4>Este es el staff médico que tenemos trabajando en este momento</h4>
+    <ul>
     
-    <ul> 
-    {%for medico in medicos %}
-    <li>    {{medico.nombre}}
-            {{medico.apellido}}
-            {{medico.especialidad}}        
-    </li>
-    {%endfor%}
+        {% for medico in lista_medicos %}
+            <li>{{medico.nombre}} - {{medicos.apellido}} - {{medico.matricula}} - {{medico.especialidad}} </li>
+        {% endfor %}
+    
     </ul>
-{%endblock%}
+{% endblock contenidoQueCambia %} 
