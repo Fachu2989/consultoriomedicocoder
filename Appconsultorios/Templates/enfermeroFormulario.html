@@ -1,0 +1,15 @@
+{% extends 'padre.html' %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+    <form action="{% url 'enfermeroFormulario' %}" method="POST"> {% csrf_token %}
+
+        {{ mi_formulario.as_p}}
+
+        <input type="submit" value="Enviar">
+
+    </form>
+
+{% endblock contenidoQueCambia %}  
