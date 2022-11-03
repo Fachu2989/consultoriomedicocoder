@@ -8,8 +8,9 @@
     <h4>Este es el staff médico que tenemos trabajando en este momento</h4>
     <ul>
     
-        {% for medico in lista_medicos %}
-            <li>{{medico.nombre}} - {{medicos.apellido}} - {{medico.matricula}} - {{medico.especialidad}} </li>
+        
+        {% for  medico in lista_medicos  %}
+            <li>{{medico.nombre}} - {{medico.apellido}} - {{medico.especialidad}} - {{medico.matricula}} </li>
         {% endfor %}
     
     </ul>

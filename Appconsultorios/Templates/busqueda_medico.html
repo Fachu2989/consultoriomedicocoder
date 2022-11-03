@@ -1,0 +1,13 @@
+{% extends 'padre.html' %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+    <form action="{% url 'busqueda_medico' %}" method="GET"> {% csrf_token %}
+
+        <p>Ingrese el Apellido del Medico <input type="text" name="apellido"/></p>
+        <input type="submit" value="Buscar Medico">
+    </form>
+
+{% endblock contenidoQueCambia %}  

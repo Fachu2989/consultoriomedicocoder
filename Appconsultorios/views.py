@@ -65,7 +65,7 @@ def enfermeroFormulario(request):
         mi_formulario= EnfermeroFormulario(request.POST)
         if mi_formulario.is_valid():
             data=mi_formulario.cleaned_data
-            enfermero=Administrativo(nombre=data["nombre"],apellido=data["apellido"],legajo=data["legajo"])
+            enfermero=Administrativo(nombre=data["nombre"],apellido=data["apellido"],matricula=data["matricula"])
             enfermero.save()
             return redirect("enfermeros")
     else: 
@@ -79,7 +79,7 @@ def medicoFormulario(request):
         mi_formulario= MedicoFormulario(request.POST)
         if mi_formulario.is_valid():
             data=mi_formulario.cleaned_data
-            medico=Administrativo(nombre=data["nombre"],apellido=data["apellido"],legajo=data["legajo"],especialidad=data["especialidad"])
+            medico=Medico(nombre=data["nombre"],apellido=data["apellido"],especialidad=data["especialidad"],matricula=data["matricula"])
             medico.save()
             return redirect("medicos")
     else: 
@@ -93,10 +93,23 @@ def pacienteFormulario(request):
         mi_formulario= PacienteFormulario(request.POST)
         if mi_formulario.is_valid():
             data=mi_formulario.cleaned_data
-            paciente=Paciente(nombre=data["nombre"],apellido=data["apellido"],legajo=data["legajo"])
+            paciente=Paciente(nombre=data["nombre"],apellido=data["apellido"],fecha_nacimiento=data["fecha_nacimiento"],tratamiento=data["tratamiento"],expediente=data["expediente"])
             paciente.save()
             return redirect("pacientes")
     else: 
         mi_formulario=PacienteFormulario()
      
     return render(request, "pacienteFormulario.html",{'mi_formulario': mi_formulario})
+
+
+#busqueda
+
+def busqueda_medico(request):
+    return render(request, 'busqueda_medico.html')
+
+def buscar(request):
+    apellido_buscada= request.GET["apellido"]
+    medico= Medico.objects.get(apellido=apellido_buscada)
+    return render(request,'resultado_busqueda.html',{"medico":medico, "apellido": apellido_buscada})
+
+

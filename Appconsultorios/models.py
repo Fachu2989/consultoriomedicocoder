@@ -6,24 +6,25 @@ class Administrativo(models.Model):
     apellido = models.CharField(max_length=50)
     legajo = models.IntegerField()
 
-    def __str__(self) -> str:
+    def __str__(self):
         return f"{self.nombre} - {self.camada} - {self.legajo}"
 
 class Medico(models.Model):
     nombre = models.CharField(max_length=50)
     apellido = models.CharField(max_length=50)
     especialidad = models.CharField(max_length=50)
+    matricula = models.IntegerField()
 
-    def __str__(self) -> str:
-        return f"{self.nombre} - {self.apellido} - {self.especialidad}"
+    def __str__(self):
+        return f"{self.nombre} - {self.apellido} - {self.especialidad} - {self.matricula}"
 
 class Enfermero(models.Model):
     nombre = models.CharField(max_length=50)
     apellido = models.CharField(max_length=50)
-    legajo = models.IntegerField()
+    matricula = models.IntegerField()
 
-    def __str__(self) -> str:
-        return f"{self.nombre} - {self.apellido} - {self.legajo}"
+    def __str__(self):
+        return f"{self.nombre} - {self.apellido} - {self.matricula}"
 
 class Paciente(models.Model):
     nombre = models.CharField(max_length=50)
@@ -32,7 +33,7 @@ class Paciente(models.Model):
     tratamiento = models.CharField(max_length=50)
     nacimiento = models.DateField(auto_now=False, auto_now_add=False)
 
-    def __str__(self) -> str:
+    def __str__(self):
         return f"{self.nombre} - {self.apellido} - {self.nacimiento} - {self.expediente} - {self.tratamiento}"
 
 
