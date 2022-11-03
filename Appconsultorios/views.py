@@ -18,7 +18,7 @@ def enfermero(request, nombre, apellido, matricula):
     enfermero.save()
 
 def paciente(request, nombre, apellido, fecha_nacimiento, tratamiento, expediente):
-    paciente = Paciente(nombre=nombre, apellido=apellido, fecha_nacimiento=fecha_nacimiento, tratamiento=tratamiento, expediente=expediente)
+    paciente = Paciente(nombre=nombre, apellido=apellido, tratamiento=tratamiento, expediente=expediente)
     paciente.save()
 
 
@@ -65,7 +65,7 @@ def enfermeroFormulario(request):
         mi_formulario= EnfermeroFormulario(request.POST)
         if mi_formulario.is_valid():
             data=mi_formulario.cleaned_data
-            enfermero=Administrativo(nombre=data["nombre"],apellido=data["apellido"],matricula=data["matricula"])
+            enfermero=Enfermero(nombre=data["nombre"],apellido=data["apellido"],matricula=data["matricula"])
             enfermero.save()
             return redirect("enfermeros")
     else: 
@@ -93,7 +93,7 @@ def pacienteFormulario(request):
         mi_formulario= PacienteFormulario(request.POST)
         if mi_formulario.is_valid():
             data=mi_formulario.cleaned_data
-            paciente=Paciente(nombre=data["nombre"],apellido=data["apellido"],fecha_nacimiento=data["fecha_nacimiento"],tratamiento=data["tratamiento"],expediente=data["expediente"])
+            paciente=Paciente(nombre=data["nombre"],apellido=data["apellido"],tratamiento=data["tratamiento"],expediente=data["expediente"])
             paciente.save()
             return redirect("pacientes")
     else: 
@@ -104,12 +104,14 @@ def pacienteFormulario(request):
 
 #busqueda
 
-def busqueda_medico(request):
-    return render(request, 'busqueda_medico.html')
+def busqueda_expediente(request):
+    return render(request, 'busqueda_paciente.html')
 
 def buscar(request):
-    apellido_buscada= request.GET["apellido"]
-    medico= Medico.objects.get(apellido=apellido_buscada)
-    return render(request,'resultado_busqueda.html',{"medico":medico, "apellido": apellido_buscada})
+    expediente_buscada= request.GET["expediente"]
+    paciente= Paciente.objects.get(expediente=expediente_buscada)
+    return render(request,'resultado_busqueda.html',{"paciente":paciente, "expediente": expediente_buscada})
+
+
 
 

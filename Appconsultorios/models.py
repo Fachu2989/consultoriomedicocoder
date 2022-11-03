@@ -31,7 +31,7 @@ class Paciente(models.Model):
     apellido = models.CharField(max_length=50)
     expediente = models.IntegerField()
     tratamiento = models.CharField(max_length=50)
-    nacimiento = models.DateField(auto_now=False, auto_now_add=False)
+    #nacimiento = models.DateField(auto_now=False, auto_now_add=False)
 
     def __str__(self):
         return f"{self.nombre} - {self.apellido} - {self.nacimiento} - {self.expediente} - {self.tratamiento}"

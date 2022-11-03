@@ -20,5 +20,6 @@ class MedicoFormulario(forms.Form):
 class PacienteFormulario(forms.Form):
     nombre= forms.CharField()
     apellido= forms.CharField()
-    nacimiento = forms.DateField(required=False)
+    tratamiento = forms.CharField()
+    #nacimiento = forms.DateField(required=False)
     expediente = forms.IntegerField()

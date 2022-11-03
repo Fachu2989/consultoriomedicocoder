@@ -9,11 +9,14 @@
     <ul>
     
         {% for paciente in lista_pacientes %}
-            <li>{{paciente.nombre}} - {{paciente.apellido}} - {{paciente.fecha_nacimiento}} - {{paciente.tratamiento}} - {{paciente.expediente}}</li>
+            <li>{{paciente.nombre}} - {{paciente.apellido}} - {{paciente.tratamiento}} - {{paciente.expediente}}</li>
         {% endfor %}
     
     </ul>
     <h3>
         <a href="{% url 'pacienteFormulario' %}">Agregar Paciente</a>
+    </h3>
+    <h3>
+        <a href="{% url 'busqueda_expediente' %}">buscar paciente</>
     </h3>
 {% endblock contenidoQueCambia %} 
