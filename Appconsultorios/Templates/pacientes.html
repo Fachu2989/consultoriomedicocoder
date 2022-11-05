@@ -10,7 +10,7 @@
    
     <h4>Estos son los pacientes que tenemos registrados en nuestra base de datos</h4>
     <ul>
-    
+        
         {% for paciente in lista_pacientes %}
             <li>{{paciente.nombre}} - {{paciente.apellido}} - {{paciente.tratamiento}} - {{paciente.expediente}}</li>
         {% endfor %}
