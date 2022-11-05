@@ -4,7 +4,10 @@
 
 {% block contenidoQueCambia %}
 
-    <h1>Pacientes </h1>    
+    <center>
+        <h1>Pacientes </h1> 
+    </center>
+   
     <h4>Estos son los pacientes que tenemos registrados en nuestra base de datos</h4>
     <ul>
     
@@ -17,6 +20,8 @@
         <a href="{% url 'pacienteFormulario' %}">Agregar Paciente</a>
     </h3>
     <h3>
-        <a href="{% url 'busqueda_expediente' %}">buscar paciente</>
+        <a href="{% url 'busqueda_expediente' %}">buscar paciente</a>
     </h3>
+
+    <input type="button" onclick="history.back()" name="volver atrás" value="volver atrás">
 {% endblock contenidoQueCambia %} 

@@ -3,13 +3,22 @@
 {% load static %}
 
 {% block contenidoQueCambia %}
+    <center>
+        <h3>Formulario para Agregar Enfermeros</h3>
+    </center>
+    
 
     <form action="{% url 'enfermeroFormulario' %}" method="POST"> {% csrf_token %}
 
         {{ mi_formulario.as_p}}
 
-        <input type="submit" value="Enviar">
+        <form action="{% url 'buscar' %}" method="GET"> {% csrf_token %}
 
+        <p>Ingrese el expediente del Paciente <input type="text" name="expediente"/></p>
+        <input type="submit" value="Buscar Paciente">
     </form>
+
+
+    <input type="button" onclick="history.back()" name="volver atrás" value="volver atrás">
 
 {% endblock contenidoQueCambia %}  

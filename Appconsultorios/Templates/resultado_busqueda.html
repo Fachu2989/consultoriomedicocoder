@@ -4,7 +4,10 @@
 
 {% block contenidoQueCambia %}
 
-    <p>El expediente del paciente es: {{expediente}}</p>
-    <h4>{{paciente.nombre}} - {{paciente.apellido}} - {{paciente.tratamiento}} </h4>
+    <h4>El expediente del paciente es: {{expediente}}</h4>
+    <h3>{{paciente.nombre}} - {{paciente.apellido}} - {{paciente.tratamiento}} </h3>
 
+
+    
+    <input type="button" onclick="history.back()" name="volver atrás" value="volver atrás">
 {% endblock contenidoQueCambia %}  

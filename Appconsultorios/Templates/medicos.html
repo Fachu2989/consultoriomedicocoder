@@ -4,7 +4,10 @@
 
 {% block contenidoQueCambia %}
 
-    <h1>Medicos </h1>    
+    <center>
+        <h1>Medicos </h1>
+    </center>
+
     <h4>Este es el staff médico que tenemos trabajando en este momento</h4>
     <ul>
     
@@ -17,4 +20,7 @@
     <h3>
         <a href="{% url 'medicoFormulario' %}">Agregar Medico</a>
     </h3>
+
+    <input type="button" onclick="history.back()" name="volver atrás" value="volver atrás">
+    
 {% endblock contenidoQueCambia %} 

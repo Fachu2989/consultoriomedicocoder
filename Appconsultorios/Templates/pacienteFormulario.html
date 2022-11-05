@@ -4,6 +4,10 @@
 
 {% block contenidoQueCambia %}
 
+    <center>
+        <h3>Formulario para Agregar Pacientes</h3>
+    </center>
+
     <form action="{% url 'pacienteFormulario' %}" method="POST"> {% csrf_token %}
 
         {{ mi_formulario.as_p}}
@@ -11,5 +15,7 @@
         <input type="submit" value="Enviar">
 
     </form>
+
+    <input type="button" onclick="history.back()" name="volver atrás" value="volver atrás">
 
 {% endblock contenidoQueCambia %} 

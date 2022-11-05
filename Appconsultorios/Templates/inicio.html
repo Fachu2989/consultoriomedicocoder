@@ -3,7 +3,16 @@
 {% load static %}
 
 {% block contenidoQueCambia %}
-    <h1>Vista de inicio</h1>    
-    <h4>Bienvenido a Consultorios Medicos GMR</h4>
+    
+    <center>
+        <h1>Vista de inicio</h1>  
+    </center>
+    
+    <center>
+        <h4>Bienvenido a Consultorios Medicos GMR</h4>
+    </center>       
 
+    <h3>Busqueda de expediente</h3>
+    
+    <a href="{% url 'busqueda_expediente' %}">buscar paciente</a>
 {% endblock contenidoQueCambia %} 
