@@ -7,7 +7,7 @@ class Administrativo(models.Model):
     legajo = models.IntegerField()
 
     def __str__(self):
-        return f"{self.nombre} - {self.camada} - {self.legajo}"
+        return f"{self.nombre} - {self.apellido} - {self.legajo}"
 
 class Medico(models.Model):
     nombre = models.CharField(max_length=50)
