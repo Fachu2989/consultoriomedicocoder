@@ -16,10 +16,4 @@ urlpatterns = [
     #url busqueda
     path("busqueda_expediente/", busqueda_expediente, name="busqueda_expediente"),
     path("buscar/", buscar, name="buscar"),
-    #CRUD Administrativos
-    path('listaAdministrativo', AdministrativoList.as_view(), name="ListaAdministrativo"),
-    path('detalleAdministrativo/<pk>', AdministrativoDetail.as_view(), name="DetalleAdministrativo"),
-    path('creaAdministrativo/', AdministrativoCreate.as_view(), name="CreaAdministrativo"),
-    path('actualizarAdministrativo/<pk>', AdministrativoUpdate.as_view(), name="ActualizaAdministrativo"),
-    path('eliminarAdministrativo/<pk>', AdministrativoDelete.as_view(), name="EliminaAdministrativo"),
 ]

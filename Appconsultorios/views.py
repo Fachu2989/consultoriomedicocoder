@@ -115,38 +115,3 @@ def buscar(request):
     paciente= Paciente.objects.get(expediente=expediente_buscada)
     return render(request,'resultado_busqueda.html',{"paciente":paciente, "expediente": expediente_buscada})
 
-
-# CRUD  ADMINISTRATIVOS
-
-class AdministrativoList(ListView):
-
-    model = Administrativo
-    template_name = 'administrativo_list.html'
-    context_object_name = "Administrativos"
-
-class AdministrativoDetail(DetailView):
-
-    model = Administrativo
-    template_name = 'administrativo_detail.html'
-    context_object_name = "Administrativo"
-
-class AdministrativoCreate(CreateView):
-
-    model = Administrativo
-    template_name = 'administrativo_create.html'
-    fields = ('__all__')
-    success_url = '/consultorio/'
-
-class AdministrativoUpdate(UpdateView):
-
-    model = Administrativo
-    template_name = 'administrativo_update.html'
-    fields = ('__all__')
-    success_url = '/consultorio/'
-
-class AdministrativoDelete(DeleteView):
-
-    model = Administrativo
-    template_name = 'administrativo_delete.html'
-    success_url = '/consultorio/'
-
