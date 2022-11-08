@@ -2,6 +2,9 @@ from django.http import HttpResponse
 from django.shortcuts import render,redirect
 from .models import Medico, Enfermero, Paciente, Administrativo
 from .form import AdministrativoFormulario,EnfermeroFormulario,MedicoFormulario,PacienteFormulario
+from django.views.generic import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 # Create your views here.
 
 #def de modelos
@@ -113,5 +116,37 @@ def buscar(request):
     return render(request,'resultado_busqueda.html',{"paciente":paciente, "expediente": expediente_buscada})
 
 
+# CRUD  ADMINISTRATIVOS
 
+class AdministrativoList(ListView):
+
+    model = Administrativo
+    template_name = 'administrativo_list.html'
+    context_object_name = "Administrativos"
+
+class AdministrativoDetail(DetailView):
+
+    model = Administrativo
+    template_name = 'administrativo_detail.html'
+    context_object_name = "Administrativo"
+
+class AdministrativoCreate(CreateView):
+
+    model = Administrativo
+    template_name = 'administrativo_create.html'
+    fields = ('__all__')
+    success_url = '/consultorio/'
+
+class AdministrativoUpdate(UpdateView):
+
+    model = Administrativo
+    template_name = 'administrativo_update.html'
+    fields = ('__all__')
+    success_url = '/consultorio/'
+
+class AdministrativoDelete(DeleteView):
+
+    model = Administrativo
+    template_name = 'administrativo_delete.html'
+    success_url = '/consultorio/'
 
