@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render,redirect
 from .models import Medico, Enfermero, Paciente, Administrativo
-from .form import AdministrativoFormulario,EnfermeroFormulario,MedicoFormulario,PacienteFormulario
+
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -26,84 +26,9 @@ def paciente(request, nombre, apellido, fecha_nacimiento, tratamiento, expedient
 
 
 
-#def html
+#def Inicio
 def inicio(request):
     return render(request,'inicio.html')
-
-def administrativos(request):
-    lista=Administrativo.objects.all
-    return render(request,'administrativos.html', {'lista_administrativos':lista})
-
-def medicos(request):
-    lista=Medico.objects.all
-    return render(request, 'medicos.html',{'lista_medicos': lista})
-
-def enfermeros(request):
-    lista=Enfermero.objects.all
-    return render(request, 'enfermeros.html', {'lista_enfermeros':lista})
-
-def pacientes(request):
-    lista=Paciente.objects.all
-    return render(request, 'pacientes.html', {'lista_pacientes':lista})
-
-#formulario
-
-def administrativoFormulario(request):
-
-    if request.method =="POST":
-        mi_formulario= AdministrativoFormulario(request.POST)
-        if mi_formulario.is_valid():
-            data=mi_formulario.cleaned_data
-            administrativo=Administrativo(nombre=data["nombre"],apellido=data["apellido"],legajo=data["legajo"])
-            administrativo.save()
-            return redirect("administrativos")
-    else: 
-        mi_formulario=AdministrativoFormulario()
-     
-    return render(request, "administrativoFormulario.html",{'mi_formulario': mi_formulario})
-
-def enfermeroFormulario(request):
-
-    if request.method =="POST":
-        mi_formulario= EnfermeroFormulario(request.POST)
-        if mi_formulario.is_valid():
-            data=mi_formulario.cleaned_data
-            enfermero=Enfermero(nombre=data["nombre"],apellido=data["apellido"],matricula=data["matricula"])
-            enfermero.save()
-            return redirect("enfermeros")
-    else: 
-        mi_formulario=EnfermeroFormulario()
-     
-    return render(request, "enfermeroFormulario.html",{'mi_formulario': mi_formulario})
-
-def medicoFormulario(request):
-
-    if request.method =="POST":
-        mi_formulario= MedicoFormulario(request.POST)
-        if mi_formulario.is_valid():
-            data=mi_formulario.cleaned_data
-            medico=Medico(nombre=data["nombre"],apellido=data["apellido"],especialidad=data["especialidad"],matricula=data["matricula"])
-            medico.save()
-            return redirect("medicos")
-    else: 
-        mi_formulario=MedicoFormulario()
-     
-    return render(request, "medicoFormulario.html",{'mi_formulario': mi_formulario})
-
-def pacienteFormulario(request):
-
-    if request.method =="POST":
-        mi_formulario= PacienteFormulario(request.POST)
-        if mi_formulario.is_valid():
-            data=mi_formulario.cleaned_data
-            paciente=Paciente(nombre=data["nombre"],apellido=data["apellido"],tratamiento=data["tratamiento"],expediente=data["expediente"])
-            paciente.save()
-            return redirect("pacientes")
-    else: 
-        mi_formulario=PacienteFormulario()
-     
-    return render(request, "pacienteFormulario.html",{'mi_formulario': mi_formulario})
-
 
 #busqueda
 
@@ -115,3 +40,135 @@ def buscar(request):
     paciente= Paciente.objects.get(expediente=expediente_buscada)
     return render(request,'resultado_busqueda.html',{"paciente":paciente, "expediente": expediente_buscada})
 
+
+#Crud administrativo
+class AdministrativoList(ListView):
+
+    model = Administrativo
+    template_name = 'administrativo_list.html'
+    context_object_name = "administrativos"
+
+class AdministrativoDetail(DetailView):
+
+    model = Administrativo
+    template_name = 'administrativo_detail.html'
+    context_object_name = "administrativo"
+
+class AdministrativoCreate(CreateView):
+
+    model = Administrativo
+    template_name = 'administrativo_create.html'
+    fields = ('__all__')
+    success_url = '/consultorio/'
+
+class AdministrativoUpdate(UpdateView):
+
+    model = Administrativo
+    template_name = 'administrativo_update.html'
+    fields = ('__all__')
+    success_url = '/consultorio/'
+
+class AdministrativoDelete(DeleteView):
+
+    model = Administrativo
+    template_name = 'administrativo_delete.html'
+    success_url = '/consultorio/'
+
+#Crud medico
+class MedicoList(ListView):
+
+    model = Medico
+    template_name = 'medico_list.html'
+    context_object_name = "medicos"
+
+class MedicoDetail(DetailView):
+
+    model = Medico
+    template_name = 'medico_detail.html'
+    context_object_name = "medico"
+
+class MedicoCreate(CreateView):
+
+    model = Medico
+    template_name = 'medico_create.html'
+    fields = ('__all__')
+    success_url = '/consultorio/'
+
+class MedicoUpdate(UpdateView):
+
+    model = Medico
+    template_name = 'medico_update.html'
+    fields = ('__all__')
+    success_url = '/consultorio/'
+
+class MedicoDelete(DeleteView):
+
+    model = Medico
+    template_name = 'medico_delete.html'
+    success_url = '/consultorio/'
+
+#Crud enfermero
+class EnfermeroList(ListView):
+
+    model = Enfermero
+    template_name = 'enfermero_list.html'
+    context_object_name = "enfermeros"
+
+class EnfermeroDetail(DetailView):
+
+    model = Enfermero
+    template_name = 'enfermero_detail.html'
+    context_object_name = "enfermero"
+
+class EnfermeroCreate(CreateView):
+
+    model = Enfermero
+    template_name = 'enfermero_create.html'
+    fields = ('__all__')
+    success_url = '/consultorio/'
+
+class EnfermeroUpdate(UpdateView):
+
+    model = Enfermero
+    template_name = 'enfermero_update.html'
+    fields = ('__all__')
+    success_url = '/consultorio/'
+
+class EnfermeroDelete(DeleteView):
+
+    model = Enfermero
+    template_name = 'enfermero_delete.html'
+    success_url = '/consultorio/'
+
+#Crud paciente
+class PacienteList(ListView):
+
+    model = Paciente
+    template_name = 'paciente_list.html'
+    context_object_name = "pacientes"
+
+class PacienteDetail(DetailView):
+
+    model = Paciente
+    template_name = 'paciente_detail.html'
+    context_object_name = "paciente"
+
+class PacienteCreate(CreateView):
+
+    model = Paciente
+    template_name = 'paciente_create.html'
+    fields = ('__all__')
+    success_url = '/consultorio/'
+
+class PacienteUpdate(UpdateView):
+
+    model = Paciente
+    template_name = 'paciente_update.html'
+    fields = ('__all__')
+    success_url = '/consultorio/'
+
+class PacienteDelete(DeleteView):
+
+    model = Paciente
+    template_name = 'paciente_delete.html'
+    success_url = '/consultorio/'

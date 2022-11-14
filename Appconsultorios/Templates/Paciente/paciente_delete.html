@@ -1,0 +1,19 @@
+{% extends 'padre.html' %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+        
+    <form method="POST">{% csrf_token %}
+
+        <p>Está seguro que desea eliminar el registro?</p>
+
+        <button type="submit">Confirmar</button>
+        <button><a href="{% url 'Inicio' %}">Cancelar</a></button>
+
+    </form>
+    <ul>
+        <input type="button" onclick="history.back()" name="volver atrás" value="volver atrás">
+    </ul>
+
+{% endblock contenidoQueCambia %}

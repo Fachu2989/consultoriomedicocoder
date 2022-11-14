@@ -1,0 +1,17 @@
+{% extends 'padre.html' %}
+
+{% load static %}
+
+
+{% block contenidoQueCambia %}
+
+    <h1>Detalle del Paciente</h1>
+
+
+    <h3>nombre: {{paciente.nombre}}, apellido: {{paciente.apellido}}, expediente: {{paciente.expediente}}, tratamiento: {{paciente.tratamiento}}</h3>
+
+
+    <ul>
+        <input type="button" onclick="history.back()" name="volver atrás" value="volver atrás">
+    </ul>
+{% endblock contenidoQueCambia %}

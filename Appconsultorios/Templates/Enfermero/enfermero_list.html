@@ -1,0 +1,34 @@
+{% extends 'padre.html' %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+    <h1>Enfermeros </h1>    
+    <h4>Estos son los Enfermeros en linea</h4>
+
+    <ul> 
+        {% for enfermero in enfermeros %}
+            <li>
+                <a href="{% url 'DetalleEnfermero' enfermero.id %}">
+                    {{enfermero}}
+                </a>
+            </li>
+            <div>
+                <button>
+                    <a href="{% url 'EliminaEnfermero' enfermero.id %}">Eliminar</a>
+                </button>
+                <button>
+                    <a href="{% url 'ActualizaEnfermero' enfermero.id %}">Editar</a>
+                </button>
+            
+            </div>
+        {% endfor %} 
+    
+    </ul>
+    <button>
+        <a href="{% url 'CreaEnfermero'%}">Crear Enfermero</a>
+    </button>
+
+    <p><input type="button" onclick="history.back()" name="volver atrás" value="volver atrás"></p>
+{% endblock contenidoQueCambia %}

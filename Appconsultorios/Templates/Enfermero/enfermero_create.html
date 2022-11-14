@@ -1,0 +1,18 @@
+{% extends 'padre.html' %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+        
+    <form action="{% url 'CreaEnfermero' %}" method="POST">{% csrf_token %}
+
+        {{form.as_p}}
+
+        <input type="submit" value="Enviar"/>
+
+    </form>
+    <ul>
+        <input type="button" onclick="history.back()" name="volver atrás" value="volver atrás">
+    </ul>
+
+{% endblock contenidoQueCambia %}

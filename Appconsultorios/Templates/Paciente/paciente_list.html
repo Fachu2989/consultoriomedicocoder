@@ -1,0 +1,36 @@
+{% extends 'padre.html' %}
+
+{% load static %}
+
+
+{% block contenidoQueCambia %}
+
+    <h1>Paciente </h1>    
+    <h4>Estos son los Pacientes en nuestro consultorio</h4>
+
+    <ul> 
+        {% for paciente in pacientes %}
+            <li>
+                <a href="{% url 'DetallePaciente' paciente.id %}">
+                    {{paciente}}
+                </a>
+            </li>
+            <div>
+                <button>
+                    <a href="{% url 'EliminaPaciente' paciente.id %}">Eliminar</a>
+                </button>
+                <button>
+                    <a href="{% url 'ActualizaPaciente' paciente.id %}">Editar</a>
+                </button>
+            
+            </div>
+        {% endfor %} 
+    
+    </ul>
+    <button>
+        <a href="{% url 'CreaPaciente'%}">Crear Paciente</a>
+    </button>
+
+    <p><input type="button" onclick="history.back()" name="volver atrás" value="volver atrás"></p>
+    
+{% endblock contenidoQueCambia %}

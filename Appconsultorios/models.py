@@ -34,7 +34,7 @@ class Paciente(models.Model):
     #nacimiento = models.DateField(auto_now=False, auto_now_add=False)
 
     def __str__(self):
-        return f"{self.nombre} - {self.apellido} - {self.nacimiento} - {self.expediente} - {self.tratamiento}"
+        return f"{self.nombre} - {self.apellido} - {self.expediente} - {self.tratamiento}"
 
 
 

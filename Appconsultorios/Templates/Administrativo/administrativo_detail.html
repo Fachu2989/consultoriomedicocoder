@@ -1,0 +1,19 @@
+{% extends 'padre.html' %}
+
+{% load static %}
+
+
+{% block contenidoQueCambia %}
+
+    <h1>Detalle de cada administrador</h1>
+
+
+    <h3>nombre: {{administrativo.nombre}}, apellido: {{administrativo.apellido}}, legajo: {{administrativo.legajo}}</h3>
+
+
+    <ul>
+        <input type="button" onclick="history.back()" name="volver atrás" value="volver atrás">
+    </ul>
+{% endblock contenidoQueCambia %}
+
+

@@ -1,0 +1,35 @@
+{% extends 'padre.html' %}
+
+{% load static %}
+
+
+{% block contenidoQueCambia %}
+
+<h1>Administrativos </h1>    
+<h4>Estos son los Administradores en linea</h4>
+
+    <ul> 
+        {% for administrativo in administrativos %}
+            <li>
+                <a href="{% url 'DetalleAdministrativo' administrativo.id %}">
+                    {{administrativo}}
+                </a>
+            </li>
+            <div>
+                <button>
+                    <a href="{% url 'EliminaAdministrativo' administrativo.id %}">Eliminar</a>
+                </button>
+                <button>
+                    <a href="{% url 'ActualizaAdministrativo' administrativo.id %}">Editar</a>
+                </button>
+            
+            </div>
+        {% endfor %} 
+    
+    </ul>
+    <button>
+        <a href="{% url 'CreaAdministrativos'%}">Crear Administrativo</a>
+    </button>
+
+    <p><input type="button" onclick="history.back()" name="volver atrás" value="volver atrás"></p>
+{% endblock contenidoQueCambia %}

@@ -21,5 +21,4 @@ class PacienteFormulario(forms.Form):
     nombre= forms.CharField()
     apellido= forms.CharField()
     tratamiento = forms.CharField()
-    #nacimiento = forms.DateField(required=False)
     expediente = forms.IntegerField()
