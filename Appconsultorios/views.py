@@ -5,7 +5,7 @@ from .models import Medico, Enfermero, Paciente, Administrativo
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 
@@ -198,3 +198,17 @@ def loginView(request):
      
     return render(request, "login.html",{'mi_formulario': mi_formulario})
 
+
+
+def registro(request):
+    if request.method =="POST":
+        form= UserCreationForm(request.POST)
+        if form.is_valid():
+            username=form.cleaned_data["username"]
+            form.save()
+            return render(request, "inicio.html",{'mensaje': f'Usuario {username} creado con éxito'})
+        else: 
+            return render(request, "inicio.html",{'mensaje': f'Error al crear un usuario'})
+    else:
+        form=UserCreationForm()
+        return render(request, "registro.html",{'form': form})
