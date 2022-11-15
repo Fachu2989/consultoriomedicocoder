@@ -55,11 +55,11 @@ ROOT_URLCONF = 'consultoriosMGR.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [r"C:\Users\Facu\Desktop\mis_proyectos\consultoriomedico\Appconsultorios\Templates",
-                r"C:\Users\Facu\Desktop\mis_proyectos\consultoriomedico\Appconsultorios\Templates\Administrativo",
-                r"C:\Users\Facu\Desktop\mis_proyectos\consultoriomedico\Appconsultorios\Templates\Medico",
-                r"C:\Users\Facu\Desktop\mis_proyectos\consultoriomedico\Appconsultorios\Templates\Enfermero",
-                r"C:\Users\Facu\Desktop\mis_proyectos\consultoriomedico\Appconsultorios\Templates\Paciente" , ],
+        'DIRS': [r"C:\Users\fabri\OneDrive\Escritorio\Desarrollo web\consultoriomedicocoder\Appconsultorios\Templates",
+                r"C:\Users\fabri\OneDrive\Escritorio\Desarrollo web\consultoriomedicocoder\Appconsultorios\Templates\Administrativo",
+                r"C:\Users\fabri\OneDrive\Escritorio\Desarrollo web\consultoriomedicocoder\Appconsultorios\Templates\Medico",
+                r"C:\Users\fabri\OneDrive\Escritorio\Desarrollo web\consultoriomedicocoder\Appconsultorios\Templates\Enfermero",
+                r"C:\Users\fabri\OneDrive\Escritorio\Desarrollo web\consultoriomedicocoder\Appconsultorios\Templates\Paciente" , ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

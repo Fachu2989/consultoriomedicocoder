@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import buscar,busqueda_expediente,inicio
+from .views import buscar,busqueda_expediente,inicio, loginView
 
 from .views import AdministrativoList,AdministrativoCreate,AdministrativoUpdate,AdministrativoDelete,AdministrativoDetail
 from .views import MedicoList,MedicoCreate,MedicoUpdate,MedicoDelete,MedicoDetail
@@ -36,4 +36,7 @@ urlpatterns = [
     path('creaPaciente/', PacienteCreate.as_view(), name="CreaPaciente"),
     path('actualizarPaciente/<pk>', PacienteUpdate.as_view(), name="ActualizaPaciente"),
     path('eliminarPaciente/<pk>', PacienteDelete.as_view(), name="EliminaPaciente"),
+    #url CRUD Login
+    path("login/", loginView, name='loginView'),
 ]
+

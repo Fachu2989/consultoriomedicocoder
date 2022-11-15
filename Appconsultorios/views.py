@@ -5,6 +5,8 @@ from .models import Medico, Enfermero, Paciente, Administrativo
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 
 #def de modelos
@@ -172,3 +174,44 @@ class PacienteDelete(DeleteView):
     model = Paciente
     template_name = 'paciente_delete.html'
     success_url = '/consultorio/'
+
+    #Crud login
+
+def loginView(request):
+
+    print('method:', request.method)
+    print('post:', request.POST)
+
+    if request.method == 'POST':
+           
+        miFormulario = AuthenticationForm(request, data=request.POST)
+
+        if miFormulario.is_valid():
+
+            data = miFormulario.cleaned_data
+
+            usuario = data['username']
+            psw = data['password']
+
+            user = authenticate(username=usuario, password=psw)
+
+            if user:
+
+                login(request, user)
+               
+                return render(request, 'inicio.html', {"mensaje": f'Bienvenido {usuario}'})
+            
+            else:
+
+                return render('inicio.html', {'mensaje':'Error. Los datos ingresados son incorrectos.'})
+        return render(request, "inicio.html", {"mensaje": 'Error. Formulario invalido'})
+    
+    else:
+
+        miFormulario = AuthenticationForm()
+
+        return render(request, 'login.html', {"miFormulario": miFormulario})
+
+
+
+
