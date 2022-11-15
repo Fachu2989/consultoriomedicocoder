@@ -37,6 +37,6 @@ urlpatterns = [
     path('actualizarPaciente/<pk>', PacienteUpdate.as_view(), name="ActualizaPaciente"),
     path('eliminarPaciente/<pk>', PacienteDelete.as_view(), name="EliminaPaciente"),
     #url CRUD Login
-    path("login/", loginView, name='loginView'),
+    path("login/", loginView, name='Login'),
 ]
 

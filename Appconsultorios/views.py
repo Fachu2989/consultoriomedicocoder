@@ -175,43 +175,26 @@ class PacienteDelete(DeleteView):
     template_name = 'paciente_delete.html'
     success_url = '/consultorio/'
 
-    #Crud login
+#Crud login
 
 def loginView(request):
-
-    print('method:', request.method)
-    print('post:', request.POST)
-
-    if request.method == 'POST':
-           
-        miFormulario = AuthenticationForm(request, data=request.POST)
-
-        if miFormulario.is_valid():
-
-            data = miFormulario.cleaned_data
-
-            usuario = data['username']
-            psw = data['password']
-
-            user = authenticate(username=usuario, password=psw)
-
+    if request.method =="POST":
+        mi_formulario= AuthenticationForm(request,data=request.POST)
+        if mi_formulario.is_valid():
+            data=mi_formulario.cleaned_data
+            usuario=data["username"]
+            psw=data["password"]
+            user= authenticate(username=usuario, password=psw)
             if user:
-
-                login(request, user)
-               
-                return render(request, 'inicio.html', {"mensaje": f'Bienvenido {usuario}'})
-            
+                 login(request,user)
+                 return render(request, "inicio.html",{'mensaje': f'bienvenido {usuario}'})
             else:
+                return render(request, "inicio.html",{'mensaje': f'Error datos incorrectos'})
+        
+        return render(request, "inicio.html",{'mensaje': f'Error formulario invalido'})
 
-                return render('inicio.html', {'mensaje':'Error. Los datos ingresados son incorrectos.'})
-        return render(request, "inicio.html", {"mensaje": 'Error. Formulario invalido'})
-    
-    else:
-
-        miFormulario = AuthenticationForm()
-
-        return render(request, 'login.html', {"miFormulario": miFormulario})
-
-
-
+    else: 
+        mi_formulario=AuthenticationForm()
+     
+    return render(request, "login.html",{'mi_formulario': mi_formulario})
 
