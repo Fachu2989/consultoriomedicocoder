@@ -7,6 +7,8 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import authenticate, login, logout
+
+from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 
 #def de modelos
@@ -35,16 +37,17 @@ def inicio(request):
 #busqueda
 
 def busqueda_expediente(request):
-    return render(request, 'busqueda_paciente.html')
-
+        return render(request, 'busqueda_paciente.html')
+    
 def buscar(request):
-    expediente_buscada= request.GET["expediente"]
-    paciente= Paciente.objects.get(expediente=expediente_buscada)
-    return render(request,'resultado_busqueda.html',{"paciente":paciente, "expediente": expediente_buscada})
+    
+        expediente_buscada= request.GET["expediente"]
+        paciente= Paciente.objects.get(expediente=expediente_buscada)
+        return render(request,'resultado_busqueda.html',{"paciente":paciente, "expediente": expediente_buscada})    
 
 
 #Crud administrativo
-class AdministrativoList(ListView):
+class AdministrativoList(LoginRequiredMixin, ListView):
 
     model = Administrativo
     template_name = 'administrativo_list.html'
@@ -143,7 +146,7 @@ class EnfermeroDelete(DeleteView):
     success_url = '/consultorio/'
 
 #Crud paciente
-class PacienteList(ListView):
+class PacienteList(LoginRequiredMixin ,ListView):
 
     model = Paciente
     template_name = 'paciente_list.html'
@@ -212,3 +215,6 @@ def registro(request):
     else:
         form=UserCreationForm()
         return render(request, "registro.html",{'form': form})
+
+
+    
