@@ -28,11 +28,11 @@
                 
                 {% if user.is_authenticated %}
                     <p>Bienvenido {{user.username}}</p>
-                    <a class="btn btn-primary" href="{% url "Logout" %}">Logout</a>
+                    <a class="btn btn-primary" href="{% url 'Logout' %}">Logout</a>
                 {% else %}
-                    <a class="btn btn-primary" href="{% url "Login" %}">Login</a>
+                    <a class="btn btn-primary" href="{% url 'Login' %}">Login</a>
                 {% endif %}
-                <a class="btn btn-primary" href="{% url "Registrar" %}">Registrar</a>
+                <a class="btn btn-primary" href="{% url 'Registrar' %}">Registrar</a>
             </div>
         </nav>
         <!-- Masthead-->

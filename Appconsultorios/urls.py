@@ -1,7 +1,13 @@
 from django.urls import path
 from django.contrib.auth.views import LogoutView
 
-from .views import buscar,busqueda_expediente,inicio, loginView, registro
+from .views import (buscar,
+busqueda_expediente,
+inicio, 
+loginView, 
+registro,
+editar_perfil,
+)
 
 from .views import AdministrativoList,AdministrativoCreate,AdministrativoUpdate,AdministrativoDelete,AdministrativoDetail
 from .views import MedicoList,MedicoCreate,MedicoUpdate,MedicoDelete,MedicoDetail
@@ -41,5 +47,7 @@ urlpatterns = [
     path("login/", loginView, name='Login'),
     path('registrar/', registro, name="Registrar"),
     path('logout/', LogoutView.as_view(template_name="logout.html"), name="Logout"),
+    path("editarPerfil/", editar_perfil, name="EditarPerfil")
 ]
+
 

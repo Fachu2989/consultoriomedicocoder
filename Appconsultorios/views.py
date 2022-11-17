@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render,redirect
 from .models import Medico, Enfermero, Paciente, Administrativo
 
@@ -7,7 +7,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import authenticate, login, logout
-
+from .form import UserEditForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 
@@ -216,5 +216,33 @@ def registro(request):
         form=UserCreationForm()
         return render(request, "registro.html",{'form': form})
 
+def editar_perfil(request):
 
-    
+    usuario = request.user
+
+    if request.method == 'POST':
+
+        mi_formulario = UserEditForm(request.POST)
+
+        if mi_formulario.is_valid():
+
+            data = mi_formulario.cleaned_data
+
+            usuario.first_name = data['first_name']
+            usuario.last_name = data['last_name']
+            usuario.email = data['email']    
+
+            usuario.save()
+
+            return render(request, 'inicio.html', {"mensaje": f'Datos Actualizados con éxito!'})
+
+    else: 
+
+        mi_formulario =UserEditForm(initial={
+            'first_name': usuario.first_name,
+            'last_name': usuario.last_name,
+            'email': usuario.email,
+
+        })
+
+        return render(request, 'editarPerfil.html', {'mi_formulario': mi_formulario})
