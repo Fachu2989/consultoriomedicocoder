@@ -1,6 +1,6 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render,redirect
-from .models import Medico, Enfermero, Paciente, Administrativo
+from .models import Medico, Enfermero, Paciente, Administrativo,Avatar
 
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
@@ -32,7 +32,8 @@ def paciente(request, nombre, apellido, fecha_nacimiento, tratamiento, expedient
 
 #def Inicio
 def inicio(request):
-    return render(request,'inicio.html')
+    avatar=Avatar.objects.get(user=request.user)
+    return render(request,"inicio.html",{'url':avatar.imagen.url})
 
 #busqueda
 
@@ -216,6 +217,8 @@ def registro(request):
         form=UserCreationForm()
         return render(request, "registro.html",{'form': form})
 
+# edición de Perfil
+    
 def editar_perfil(request):
 
     usuario = request.user
@@ -246,3 +249,4 @@ def editar_perfil(request):
         })
 
         return render(request, 'editarPerfil.html', {'mi_formulario': mi_formulario})
+    

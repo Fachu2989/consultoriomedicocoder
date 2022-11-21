@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -55,11 +57,11 @@ ROOT_URLCONF = 'consultoriosMGR.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [r"C:\Users\fabri\OneDrive\Escritorio\Desarrollo web\consultoriomedicocoder\Appconsultorios\Templates",
-                r"C:\Users\fabri\OneDrive\Escritorio\Desarrollo web\consultoriomedicocoder\Appconsultorios\Templates\Administrativo",
-                r"C:\Users\fabri\OneDrive\Escritorio\Desarrollo web\consultoriomedicocoder\Appconsultorios\Templates\Medico",
-                r"C:\Users\fabri\OneDrive\Escritorio\Desarrollo web\consultoriomedicocoder\Appconsultorios\Templates\Enfermero",
-                r"C:\Users\fabri\OneDrive\Escritorio\Desarrollo web\consultoriomedicocoder\Appconsultorios\Templates\Paciente" , ],
+        'DIRS': [r"C:\Users\Facu\Desktop\mis_proyectos\consultoriomedico\Appconsultorios\Templates",
+                r"C:\Users\Facu\Desktop\mis_proyectos\consultoriomedico\Appconsultorios\Templates\Administrativo",
+                r"C:\Users\Facu\Desktop\mis_proyectos\consultoriomedico\Appconsultorios\Templates\Medico",
+                r"C:\Users\Facu\Desktop\mis_proyectos\consultoriomedico\Appconsultorios\Templates\Enfermero",
+                r"C:\Users\Facu\Desktop\mis_proyectos\consultoriomedico\Appconsultorios\Templates\Paciente" , ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -128,3 +130,6 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = '/consultorio/login'
+
+MEDIA_URL='/media/'
+MEDIA_ROOT=os.path.join(BASE_DIR,'media')
