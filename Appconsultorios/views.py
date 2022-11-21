@@ -192,9 +192,9 @@ def loginView(request):
                  login(request,user)
                  return render(request, "inicio.html",{'mensaje': f'bienvenido {usuario}'})
             else:
-                return render(request, "inicio.html",{'mensaje': f'Error datos incorrectos'})
+                return render(request, "inicio.html",{'mensaje': f'Error. Datos incorrectos'})
         
-        return render(request, "inicio.html",{'mensaje': f'Error formulario invalido'})
+        return render(request, "inicio.html",{'mensaje': f'Error. Formulario invalido'})
 
     else: 
         mi_formulario=AuthenticationForm()

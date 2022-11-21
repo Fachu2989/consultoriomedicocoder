@@ -34,6 +34,7 @@ class PacienteFormulario(forms.ModelForm):
             'nombre': forms.TextInput(
                 attrs={    
                         'placeholder': 'Ingrese un nombre...'}
+                       
             )
         }
 
