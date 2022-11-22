@@ -19,11 +19,7 @@ class MedicoFormulario(forms.Form):
     especialidad = forms.CharField()
     matricula = forms.IntegerField()
 
-# class PacienteFormulario(forms.Form):
-#     nombre= forms.CharField()
-#     apellido= forms.CharField()
-#     tratamiento = forms.CharField()
-#     expediente = forms.IntegerField()
+
 
 class PacienteFormulario(forms.ModelForm):
 
@@ -64,3 +60,4 @@ def clean_password2(self):
     if password2 != self.cleaned_data['password1']:
         raise forms.ValidationError('Las contraseñas no coinciden!')
     return password2
+

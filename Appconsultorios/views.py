@@ -1,6 +1,6 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render,redirect
-from .models import Medico, Enfermero, Paciente, Administrativo
+from .models import Medico, Enfermero, Paciente, Administrativo,Avatar
 
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
@@ -32,7 +32,17 @@ def paciente(request, nombre, apellido, fecha_nacimiento, tratamiento, expedient
 
 #def Inicio
 def inicio(request):
-    return render(request,'inicio.html')
+    try:
+    
+        avatar=Avatar.objects.get(user=request.user)
+        return render(request,"inicio.html",{'url':avatar.imagen.url})
+
+    except:
+
+        return render(request, 'inicio.html', {"url": avatar.imagen.url} )
+
+
+
 
 #busqueda
 
@@ -216,6 +226,8 @@ def registro(request):
         form=UserCreationForm()
         return render(request, "registro.html",{'form': form})
 
+# edición de Perfil
+    
 def editar_perfil(request):
 
     usuario = request.user
@@ -235,7 +247,7 @@ def editar_perfil(request):
             usuario.save()
 
             return render(request, 'inicio.html', {"mensaje": f'Datos Actualizados con éxito!'})
-
+        return render(request, 'editarPerfil.html', {"mensaje": "Contraseñas no coinciden"})
     else: 
 
         mi_formulario =UserEditForm(initial={
@@ -246,3 +258,4 @@ def editar_perfil(request):
         })
 
         return render(request, 'editarPerfil.html', {'mi_formulario': mi_formulario})
+    
