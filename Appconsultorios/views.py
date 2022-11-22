@@ -32,11 +32,15 @@ def paciente(request, nombre, apellido, fecha_nacimiento, tratamiento, expedient
 
 #def Inicio
 def inicio(request):
-    try:
-        avatar=Avatar.objects.get(user=request.user)
-        return render(request,"inicio.html",{'url':avatar.imagen.url})
+    avatar=Avatar.objects.get(user=request.user)
+    return render(request,"inicio.html",{'url':avatar.imagen.url})
+
     except:
-        return render(request,"inicio.html")
+
+        return render(request, 'inicio.html', {"url": avatar.imagen.url} )
+
+
+
 
 #busqueda
 
@@ -237,11 +241,11 @@ def editar_perfil(request):
             usuario.first_name = data['first_name']
             usuario.last_name = data['last_name']
             usuario.email = data['email']    
-
+            
             usuario.save()
 
             return render(request, 'inicio.html', {"mensaje": f'Datos Actualizados con éxito!'})
-
+        return render(request, 'editarPerfil.html', {"mensaje": "Contraseñas no coinciden"})
     else: 
 
         mi_formulario =UserEditForm(initial={
