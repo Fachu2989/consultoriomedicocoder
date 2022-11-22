@@ -32,8 +32,11 @@ def paciente(request, nombre, apellido, fecha_nacimiento, tratamiento, expedient
 
 #def Inicio
 def inicio(request):
-    avatar=Avatar.objects.get(user=request.user)
-    return render(request,"inicio.html",{'url':avatar.imagen.url})
+    try:
+        avatar=Avatar.objects.get(user=request.user)
+        return render(request,"inicio.html",{'url':avatar.imagen.url})
+    except:
+        return render(request,"inicio.html")
 
 #busqueda
 
