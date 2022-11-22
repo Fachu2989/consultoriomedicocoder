@@ -3,17 +3,17 @@
 {% load static %}
 
 {% block contenidoQueCambia %}
-
+        
     <form method="POST">{% csrf_token %}
 
-        {{mi_formulario.as_p}}
+        {{miFormulario.as_p}}
 
         {{mensaje}}
 
         <input type="submit" value="Actualizar"/>
-    
+
     </form>
-    
+
 {% endblock contenidoQueCambia %}
 
 

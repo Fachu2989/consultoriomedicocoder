@@ -226,35 +226,34 @@ def registro(request):
         return render(request, "registro.html",{'form': form})
 
 # edición de Perfil
-    
 def editar_perfil(request):
+    
+    print('method:', request.method)
+    print('post: ', request.POST)
 
     usuario = request.user
 
     if request.method == 'POST':
 
-        mi_formulario = UserEditForm(request.POST)
+        miFormulario = UserEditForm(request.POST)
 
-        if mi_formulario.is_valid():
+        if miFormulario.is_valid():
 
-            data = mi_formulario.cleaned_data
+            data = miFormulario.cleaned_data
 
-            usuario.first_name = data['first_name']
-            usuario.last_name = data['last_name']
-            usuario.email = data['email']    
-            
+            usuario.first_name = data["first_name"]
+            usuario.last_name = data["last_name"]
+            usuario.email = data["email"]
+            usuario.set_password(data["password1"])
+
             usuario.save()
 
-            return render(request, 'inicio.html', {"mensaje": f'Datos Actualizados con éxito!'})
-        return render(request, 'editarPerfil.html', {"mensaje": "Contraseñas no coinciden"})
-    else: 
-
-        mi_formulario =UserEditForm(initial={
-            'first_name': usuario.first_name,
-            'last_name': usuario.last_name,
-            'email': usuario.email,
-
-        })
-
-        return render(request, 'editarPerfil.html', {'mi_formulario': mi_formulario})
+            return render(request, "inicio.html", {"mensaje": f'Datos actualizados!'})
+        
+        return render(request, "editarPerfil.html", {"mensaje": 'Contraseñas no coinciden'} )
     
+    else:
+
+        miFormulario = UserEditForm(instance=request.user)
+
+        return render(request, "editarPerfil.html", {"miFormulario": miFormulario}) 
