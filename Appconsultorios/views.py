@@ -38,7 +38,7 @@ def inicio(request):
 
     except:
 
-        return render(request, 'inicio.html', {"url": avatar.imagen.url} )
+        return render(request, 'inicio.html')
 
 
 
