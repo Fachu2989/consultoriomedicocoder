@@ -231,7 +231,7 @@ def editar_perfil(request):
             usuario.first_name = data['first_name']
             usuario.last_name = data['last_name']
             usuario.email = data['email']    
-
+            
             usuario.save()
 
             return render(request, 'inicio.html', {"mensaje": f'Datos Actualizados con éxito!'})
