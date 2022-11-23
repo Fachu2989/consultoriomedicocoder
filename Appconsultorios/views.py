@@ -49,10 +49,12 @@ def busqueda_expediente(request):
         return render(request, 'busqueda_paciente.html')
     
 def buscar(request):
-    
+    try:
         expediente_buscada= request.GET["expediente"]
         paciente= Paciente.objects.get(expediente=expediente_buscada)
         return render(request,'resultado_busqueda.html',{"paciente":paciente, "expediente": expediente_buscada})    
+    except:
+        return render(request, 'busqueda_paciente.html',{"mensaje":f'el expediente no encontrado'})
 
 
 #Crud administrativo
@@ -228,9 +230,6 @@ def registro(request):
 # edición de Perfil
 def editar_perfil(request):
     
-    print('method:', request.method)
-    print('post: ', request.POST)
-
     usuario = request.user
 
     if request.method == 'POST':

@@ -3,7 +3,10 @@
 {% load static %}
 
 {% block contenidoQueCambia %}
-        
+    <H1>
+        Edición de Perfil de usuario
+    </H1>    
+
     <form method="POST">{% csrf_token %}
 
         {{miFormulario.as_p}}
