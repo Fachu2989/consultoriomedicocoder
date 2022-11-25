@@ -201,7 +201,7 @@ def loginView(request):
             user= authenticate(username=usuario, password=psw)
             if user:
                  login(request,user)
-                 return render(request, "inicio.html",{'mensaje': f'bienvenido {usuario}'})
+                 return render(request, "inicio.html",{'mensaje': f'Bienvenido {usuario}'})
             else:
                 return render(request, "inicio.html",{'mensaje': f'Error. Datos incorrectos'})
         
@@ -256,3 +256,7 @@ def editar_perfil(request):
         miFormulario = UserEditForm(instance=request.user)
 
         return render(request, "editarPerfil.html", {"miFormulario": miFormulario}) 
+
+def about_us(request):
+
+    return render(request, 'about_us.html')
