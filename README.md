@@ -16,4 +16,8 @@
  4.3 En la URL 'listaPaciente' tenemos un href, para poder recorrer cada ítem de la lista, así como también un href para la edición de los mismos. Otra opción que podemos encontrar    dentro de la misma url es la de eliminar individualmente cualquier elemento de la lista. Además, siendo usuario autorizado, se pueden crear nuevos registros.
   4.4 En la URL 'listaMedicos' tenemos un href, para poder recorrer cada ítem de la lista, así como también un href para la edición de los mismos. Otra opción que podemos encontrar dentro de la misma url es la de eliminar individualmente cualquier elemento de la lista. Además, siendo usuario autorizado, se pueden crear nuevos registros.
   4.5 En la URL 'listaEnfermeros' tenemos un href, para poder recorrer cada ítem de la lista, así como también un href para la edición de los mismos. Otra opción que podemos encontrar dentro de la misma url es la de eliminar individualmente cualquier elemento de la lista. Además, siendo usuario autorizado, se pueden crear nuevos registros.
-  4.6 En la URL 'listaAdministrativo' tenemos un href, para poder recorrer cada ítem de la lista, así como también un href para la edición de los mismos. Otra opción que podemos encontrar dentro de la misma url es la de eliminar individualmente cualquier elemento de la lista. Además, siendo usuario autorizado, se pueden crear nuevos registros. """
+  4.6 En la URL 'listaAdministrativo' tenemos un href, para poder recorrer cada ítem de la lista, así como también un href para la edición de los mismos. Otra opción que podemos encontrar dentro de la misma url es la de eliminar individualmente cualquier elemento de la lista. Además, siendo usuario autorizado, se pueden crear nuevos registros.
+
+5. Utilizando el siguiente link, se puede acceder a una vista de cómo funciona nuestra página: https://youtu.be/JM_Ydo3UDvQ
+
+ """
